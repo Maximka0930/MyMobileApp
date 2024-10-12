@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoConnectionActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="318dp"
+
+        android:layout_height="276dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"> <!-- Устанавливаем вертикальную ориентацию -->
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/no_connection_img" />
+
+        <FrameLayout
+            android:layout_width="318dp"
+            android:layout_height="148dp">
+            <TextView
+                android:layout_width="239dp"
+                android:layout_height="82dp"
+                android:text="Нет подключения    к интернету"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="#1A1A1A"
+                android:textSize="24dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="318dp"
+                android:layout_height="34dp"
+                android:text="Проверьте подключение и повторите     попытку"
+                android:textColor="#1A1A1A"
+                android:textSize="14dp"
+                android:textAlignment="center"
+
+                android:layout_gravity="bottom"
+                tools:ignore="RtlCompat" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/TryAgainConnection"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:onClick="onTryAgainClicked"
+        android:text="Повторить попытку"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="#2A1246"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

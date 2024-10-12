@@ -7,13 +7,139 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="342dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginHorizontal="24dp">
+
+                <Button
+                    android:layout_width="105dp"
+                    android:layout_height="33dp"
+                    android:padding="2dp"
+                    android:textColor="#2A1246"
+                    android:textSize="14sp"
+                    android:layout_gravity="end"
+                    android:text="Пропустить"
+                    android:background="@android:color/transparent" />
+        </FrameLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="149dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="520dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <FrameLayout
+                android:layout_width="300dp"
+                android:layout_height="87dp"
+                android:layout_gravity="center_horizontal"
+
+                >
+
+                <TextView
+                    android:id="@+id/firstText"
+                    android:layout_width="277dp"
+                    android:layout_height="31dp"
+                    android:text="Аренда автомобилей"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_gravity="top"/>
+
+                <TextView
+                    android:id="@+id/secondText"
+                    android:layout_width="300dp"
+                    android:layout_height="34dp"
+                    android:text="Открой для себя удобный и доступный способ передвижения "
+                    android:textSize="14sp"
+                    android:textColor="#1A1A1A"
+                    android:layout_gravity="bottom"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="310dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="88dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center_vertical"
+                    >
+
+                    <View
+                        android:id="@+id/line1"
+                        android:layout_width="40dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="2dp"
+                        android:radius="80dp"
+                        android:background = "@drawable/rounded_line"
+                        />
+
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="20dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:background = "@drawable/rounded_line2"
+                        android:layout_marginHorizontal="1dp"
+                        />
+
+                    <View
+                        android:id="@+id/line3"
+                        android:layout_width="20dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:background = "@drawable/rounded_line2"
+                        android:layout_marginHorizontal="1dp" />
+
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/nextButton"
+                    android:onClick="onNextButtonClick"
+                    android:layout_width="131dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="right|center"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="#2A1246"
+                    android:text="Далее"
+                    android:textSize="14sp"
+
+                    />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
