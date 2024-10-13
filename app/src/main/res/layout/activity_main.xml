@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".OnboardingActivity">
 
 
 
@@ -20,15 +20,22 @@
             android:layout_marginTop="64dp"
             android:layout_marginHorizontal="24dp">
 
-                <Button
-                    android:layout_width="105dp"
-                    android:layout_height="33dp"
-                    android:padding="2dp"
-                    android:textColor="#2A1246"
-                    android:textSize="14sp"
-                    android:layout_gravity="end"
-                    android:text="Пропустить"
-                    android:background="@android:color/transparent" />
+            <TextView
+                android:onClick="openGettingStartedActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="4dp"
+                android:text="Пропустить"
+                android:textColor="#2A1246"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+
+
+
+
         </FrameLayout>
 
         <androidx.viewpager2.widget.ViewPager2
@@ -120,6 +127,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/nextButton"
                     android:onClick="onNextButtonClick"
+
                     android:layout_width="131dp"
                     android:layout_height="54dp"
                     android:layout_gravity="right|center"

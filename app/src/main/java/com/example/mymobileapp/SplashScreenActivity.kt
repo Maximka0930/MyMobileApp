@@ -20,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
             // Проверяем подключение к интернету
             if (isInternetAvailable()) {
                 // Интернет есть - переходим в MainActivity
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, OnboardingActivity::class.java)
                 startActivity(intent)
             } else {
                 // Интернет отсутствует - переходим в NoConnectionActivity

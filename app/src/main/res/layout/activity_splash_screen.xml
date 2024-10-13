@@ -24,7 +24,7 @@
 
         <TextView
             android:layout_width="342dp"
-            android:layout_height="17dp"
+            android:layout_height="18dp"
             android:text="@string/splashScreen_DesText"
             android:layout_gravity="bottom"
             android:textColor="#B2000000"
