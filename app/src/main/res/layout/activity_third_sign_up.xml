@@ -119,6 +119,9 @@
                     app:boxStrokeColor="#1018280D">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/numberVU"
+                        android:maxLength="10"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="12dp"
@@ -155,7 +158,9 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dateEditText"
+
+                        android:maxLength="10"
+                        android:id="@+id/dateEditTextForThird"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:inputType="date"

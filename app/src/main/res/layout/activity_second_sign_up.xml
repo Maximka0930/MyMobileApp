@@ -75,8 +75,10 @@
                     app:boxStrokeColor="#1018280D">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/surname_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
                         android:textColor="@color/black"
@@ -107,8 +109,10 @@
                     app:boxStrokeColor="#1018280D">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
                         android:textColor="@color/black"
@@ -139,8 +143,10 @@
                     app:boxStrokeColor="#1018280D">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/patronymic_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
                         android:textColor="@color/black"
@@ -175,7 +181,8 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dateEditText"
+                        android:maxLength="10"
+                        android:id="@+id/dateEditTextForSecond"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:inputType="date"
@@ -218,6 +225,7 @@
                     android:textColor="#404040" />
 
                 <RadioGroup
+                    android:id="@+id/orientationInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">

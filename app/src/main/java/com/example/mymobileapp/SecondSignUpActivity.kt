@@ -1,16 +1,19 @@
 package com.example.mymobileapp
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
 import java.util.*
 
 class SecondSignUpActivity : AppCompatActivity() {
@@ -26,9 +29,7 @@ class SecondSignUpActivity : AppCompatActivity() {
             insets
         }
 
-        dateEditText = findViewById(R.id.dateEditText)
-
-        // Добавляем слушатель для иконки календаря
+        dateEditText = findViewById(R.id.dateEditTextForSecond)
         dateEditText.setOnDrawableClickListener {
             showDatePickerDialog()
         }
@@ -38,6 +39,7 @@ class SecondSignUpActivity : AppCompatActivity() {
         finish()
     }
 
+    @SuppressLint("DefaultLocale")
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -57,13 +59,45 @@ class SecondSignUpActivity : AppCompatActivity() {
     }
 
     fun openThirdSignUpActivity(view: View) {
-        val intent = Intent(this,ThirdSignUpActivity::class.java)
-        startActivity(intent)
+
+        val surname = findViewById<TextInputEditText>(R.id.surname_input)
+        val name = findViewById<TextInputEditText>(R.id.name_input)
+        val patronymic = findViewById<TextInputEditText>(R.id.patronymic_input)
+        val date = findViewById<TextInputEditText>(R.id.dateEditTextForSecond)
+        val firstRadioButton = findViewById<RadioButton>(R.id.radioButton1)
+        val secondRadioButton = findViewById<RadioButton>(R.id.radioButton2)
+
+
+        if (surname.text.toString() != "" && name.text.toString() != "" && /*patronymic.text.toString() != "" &&*/ date.text.toString() != "" )
+   {
+       if (firstRadioButton.isChecked || secondRadioButton.isChecked)
+       {
+           val currentDate = SimpleDateFormat("dd/M/yyyy").format(Date())
+           if (date.text.toString() != currentDate.toString())
+           {
+               val intent = Intent(this,ThirdSignUpActivity::class.java)
+               startActivity(intent)
+           }
+           else
+           {
+               Toast.makeText(this,"Дата не может быть сегодняшней!", Toast.LENGTH_SHORT).show()
+           }
+       }
+       else
+       { Toast.makeText(this,"Выберите пол!", Toast.LENGTH_SHORT).show() }
+   }
+   else
+        { Toast.makeText(this,"Были введены не все данные!", Toast.LENGTH_SHORT).show() }
 
     }
+
+
 }
 
+
+
 // Расширение для TextInputEditText, чтобы обрабатывать клики по иконке
+@SuppressLint("ClickableViewAccessibility")
 fun TextInputEditText.setOnDrawableClickListener(onClick: () -> Unit) {
     setOnTouchListener { v, event ->
         if (event.action == MotionEvent.ACTION_UP) {

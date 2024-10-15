@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstSignUpActivity"
     android:background="@color/white"
-    >
+    tools:context=".FirstSignUpActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -75,8 +74,10 @@
                     app:boxStrokeColor="#1018280D">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
                         android:textColor="@color/black"
@@ -109,7 +110,7 @@
                     app:endIconTint="#D0D5DD">
 
                     <com.google.android.material.textfield.TextInputEditText
-
+                        android:id="@+id/passwordInput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
@@ -149,7 +150,7 @@
                     app:endIconTint="#D0D5DD">
 
                     <com.google.android.material.textfield.TextInputEditText
-
+                        android:id="@+id/repeatPasswordInput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
@@ -166,6 +167,7 @@
             </LinearLayout>
 
             <CheckBox
+                android:id="@+id/checkbox"
                 android:layout_width="342dp"
                 android:layout_height="32dp"
                 android:layout_gravity="start"
@@ -181,18 +183,18 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:onClick="openSecondSignUpActivity"
         android:layout_width="342dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#2A1246"
+        android:onClick="openSecondSignUpActivity"
         android:text="Далее"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="50dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
