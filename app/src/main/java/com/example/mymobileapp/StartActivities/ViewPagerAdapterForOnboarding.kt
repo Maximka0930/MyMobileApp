@@ -1,10 +1,11 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.StartActivities
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymobileapp.R
 
 class ViewPagerAdapterForOnboarding(
     val images: List<Int>

@@ -15,28 +15,28 @@
         android:theme="@style/Theme.MyMobileApp"
         tools:targetApi="31">
         <activity
-            android:name=".CongratulationsActivity"
+            android:name=".Authorization.Registration.CongratulationsActivity"
             android:exported="false" />
         <activity
-            android:name=".ThirdSignUpActivity"
+            android:name=".Authorization.Registration.ThirdSignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SecondSignUpActivity"
+            android:name=".Authorization.Registration.SecondSignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".FirstSignUpActivity"
+            android:name=".Authorization.Registration.FirstSignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Authorization.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".GettingStartedActivity"
+            android:name=".Authorization.GettingStartedActivity"
             android:exported="false" />
         <activity
-            android:name=".NoConnectionActivity"
+            android:name=".StartActivities.NoConnectionActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".StartActivities.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".StartActivities.OnboardingActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
     </application>

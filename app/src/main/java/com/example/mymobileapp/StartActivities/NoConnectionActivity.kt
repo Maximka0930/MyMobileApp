@@ -1,4 +1,4 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.StartActivities
 
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mymobileapp.R
 
 class NoConnectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.StartActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import android.view.View
 import android.widget.TextView
+import com.example.mymobileapp.Authorization.GettingStartedActivity
+import com.example.mymobileapp.R
 import com.google.android.material.button.MaterialButton
 
 
@@ -72,9 +74,15 @@ class OnboardingActivity : AppCompatActivity() {
         line3.layoutParams.width = if (position == 2) activeLineWidth else inactiveLineWidth
 
         // Обновляем фон линий
-        line1.background = if (position == 0) getDrawable(R.drawable.rounded_line) else getDrawable(R.drawable.rounded_line2)
-        line2.background = if (position == 1) getDrawable(R.drawable.rounded_line) else getDrawable(R.drawable.rounded_line2)
-        line3.background = if (position == 2) getDrawable(R.drawable.rounded_line) else getDrawable(R.drawable.rounded_line2)
+        line1.background = if (position == 0) getDrawable(R.drawable.rounded_line) else getDrawable(
+            R.drawable.rounded_line2
+        )
+        line2.background = if (position == 1) getDrawable(R.drawable.rounded_line) else getDrawable(
+            R.drawable.rounded_line2
+        )
+        line3.background = if (position == 2) getDrawable(R.drawable.rounded_line) else getDrawable(
+            R.drawable.rounded_line2
+        )
 
         // Запрашиваем обновление макета
         line1.requestLayout()

@@ -1,4 +1,4 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.Authorization
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mymobileapp.R
+import com.example.mymobileapp.Authorization.Registration.FirstSignUpActivity
 
 
 class GettingStartedActivity : AppCompatActivity() {

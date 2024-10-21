@@ -1,4 +1,4 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.StartActivities
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mymobileapp.R
 
 class SplashScreenActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.Authorization.Registration
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mymobileapp.R
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
@@ -75,7 +76,7 @@ class SecondSignUpActivity : AppCompatActivity() {
            val currentDate = SimpleDateFormat("dd/M/yyyy").format(Date())
            if (date.text.toString() != currentDate.toString())
            {
-               val intent = Intent(this,ThirdSignUpActivity::class.java)
+               val intent = Intent(this, ThirdSignUpActivity::class.java)
                startActivity(intent)
            }
            else

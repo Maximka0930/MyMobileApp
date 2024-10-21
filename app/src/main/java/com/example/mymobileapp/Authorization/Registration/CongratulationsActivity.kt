@@ -1,10 +1,11 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.Authorization.Registration
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mymobileapp.R
 
 class CongratulationsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

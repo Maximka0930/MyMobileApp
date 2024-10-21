@@ -1,8 +1,7 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.Authorization.Registration
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
@@ -10,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mymobileapp.R
 import com.google.android.material.textfield.TextInputEditText
 import java.util.regex.Pattern
 
@@ -61,7 +61,7 @@ class FirstSignUpActivity : AppCompatActivity() {
                 {
                     if (password.text.toString() == repeatPassword.text.toString())
                     {
-                        val intent = Intent(this,SecondSignUpActivity::class.java)
+                        val intent = Intent(this, SecondSignUpActivity::class.java)
                         startActivity(intent)
                     }
                     else
