@@ -83,7 +83,7 @@
                         app:boxStrokeColor="#1018280D">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/loginemail"
+                            android:id="@+id/auth_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
@@ -119,6 +119,7 @@
                         app:boxStrokeColor="#1018280D"
                         >
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/auth_password"
 
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -162,6 +163,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.button.MaterialButton
+                    android:onClick="openMainPageActivity"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     app:cornerRadius="8dp"

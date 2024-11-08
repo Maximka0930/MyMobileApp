@@ -90,6 +90,7 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:onClick="onMainPage"
         android:layout_width="342dp"
         android:layout_height="52dp"
         android:backgroundTint="#2A1246"

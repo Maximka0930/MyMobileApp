@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RadioButton
@@ -34,6 +36,40 @@ class SecondSignUpActivity : AppCompatActivity() {
         dateEditText.setOnDrawableClickListener {
             showDatePickerDialog()
         }
+
+        dateEditText.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+            private val mask = "DD/MM/YYYY"
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isUpdating) return
+
+                isUpdating = true
+
+                // Получаем чистую строку, убирая любые символы кроме цифр
+                val clean = s.toString().replace(Regex("[^\\d]"), "")
+                val length = clean.length
+
+                // Форматируем строку по маске
+                val formatted = when {
+                    length >= 8 -> "${clean.substring(0, 2)}/${clean.substring(2, 4)}/${clean.substring(4, 8)}"
+                    length >= 4 -> "${clean.substring(0, 2)}/${clean.substring(2, 4)}/${clean.substring(4)}"
+                    length >= 2 -> "${clean.substring(0, 2)}/${clean.substring(2)}"
+                    else -> clean
+                }
+
+                // Обновляем текст в поле
+                dateEditText.setText(formatted)
+                dateEditText.setSelection(formatted.length)
+
+                isUpdating = false
+            }
+        })
+
     }
 
     fun goBack(view: View) {
@@ -76,7 +112,27 @@ class SecondSignUpActivity : AppCompatActivity() {
            val currentDate = SimpleDateFormat("dd/M/yyyy").format(Date())
            if (date.text.toString() != currentDate.toString())
            {
-               val intent = Intent(this, ThirdSignUpActivity::class.java)
+
+               val email = intent.getStringExtra("email") ?: ""
+               val password = intent.getStringExtra("password") ?: ""
+
+               val intent = Intent(this, ThirdSignUpActivity::class.java).apply {
+                   putExtra("email", email)
+                   putExtra("password", password)
+                   putExtra("surname", surname.text.toString())
+                   putExtra("name", name.text.toString())
+                   putExtra("patronymic", patronymic.text.toString())
+
+                   putExtra("dateOfBirth", date.text.toString()) // Преобразуем в строку
+
+
+
+                   if (firstRadioButton.isChecked)
+                   { putExtra("gender", "мужской" )}
+                   if (secondRadioButton.isChecked)
+                   { putExtra("gender", "женский" )}
+
+               }
                startActivity(intent)
            }
            else
