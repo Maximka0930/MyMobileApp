@@ -1,9 +1,9 @@
 package com.example.mymobileapp.MainPage
 
-import FavoritesFragment
-import HomeFragment
+import com.example.mymobileapp.MainPage.Fragments.FavoritesFragment
+import com.example.mymobileapp.MainPage.Fragments.HomeFragment
 import SearchResultFragment
-import SettingsFragment
+import com.example.mymobileapp.MainPage.Fragments.SettingsFragment
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -16,6 +16,7 @@ import com.example.mymobileapp.R
 
 
 class MainPage : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,6 +43,10 @@ class MainPage : AppCompatActivity() {
             HomePage.setImageResource(R.drawable.home_choose_icon)
             FavouritesPage.setImageResource(R.drawable.bookmark_icon)
             SettingsPage.setImageResource(R.drawable.settings_unchoose_icon)
+            HomePage.isEnabled = false // Отключение кнопки HomePage
+            FavouritesPage.isEnabled = true // Отключение кнопки HomePage
+            SettingsPage.isEnabled = true
+
         }
 
         findViewById<ImageView>(R.id.FavouritesPage).setOnClickListener {
@@ -49,6 +54,9 @@ class MainPage : AppCompatActivity() {
             HomePage.setImageResource(R.drawable.home_icon)
             FavouritesPage.setImageResource(R.drawable.bookmark_icon)
             SettingsPage.setImageResource(R.drawable.settings_unchoose_icon)
+            FavouritesPage.isEnabled = false // Отключение кнопки HomePage
+            HomePage.isEnabled = true // Отключение кнопки HomePage
+            SettingsPage.isEnabled = true
 
 
         }
@@ -58,6 +66,9 @@ class MainPage : AppCompatActivity() {
             HomePage.setImageResource(R.drawable.home_icon)
             FavouritesPage.setImageResource(R.drawable.bookmark_icon)
             SettingsPage.setImageResource(R.drawable.settings_icon)
+            SettingsPage.isEnabled = false
+            HomePage.isEnabled = true // Отключение кнопки HomePage
+            FavouritesPage.isEnabled = true // Отключение кнопки HomePage
 
 
         }
@@ -67,13 +78,12 @@ class MainPage : AppCompatActivity() {
         super.onResume()
         val openSearchResult = intent.getBooleanExtra("openSearchResult", false)
         if (openSearchResult) {
-            replaceFragment(SearchResultFragment()) // Открытие SearchResultFragment
-            showNavigationButtons() // Отображение кнопок навигации
-            intent.removeExtra("openSearchResult") // Очистка флага, чтобы избежать повторного открытия
+            // Заменяем текущий фрагмент на SearchResultFragment
+            replaceFragment(SearchResultFragment())
+            showNavigationButtons()  // Отображение кнопок навигации
+            intent.removeExtra("openSearchResult")  // Очистка флага
         }
     }
-
-
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()

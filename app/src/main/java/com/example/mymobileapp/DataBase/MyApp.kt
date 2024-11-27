@@ -1,4 +1,4 @@
-package com.example.mymobileapp
+package com.example.mymobileapp.DataBase
 
 import android.app.Application
 

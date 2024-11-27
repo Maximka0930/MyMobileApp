@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!--Заголовок слайда-->
+    <FrameLayout
+        android:id="@+id/frameLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Удачной поездки"
+            android:textColor="#101828"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <!--Уведомление об успешном бронировании-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="45dp"
+
+        android:gravity="center"
+        
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout6">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/check_mark_icon"/>
+
+        <TextView
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Бронирование успешно создано"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:lineHeight="24dp"
+            android:textColor="#101828"
+            />
+
+
+    </LinearLayout>
+
+    <!--Блок переходов-->
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="32dp"
+
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white">
+
+        <!--Кнопка для просмотра бронирований -->
+        <TextView
+
+            android:id="@+id/OpenCarReservations"
+            android:focusable="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="Перейти к своим бронированиям"
+            android:textSize="14sp"
+            android:lineHeight="17dp"
+            android:textColor="#101828"
+            />
+        <!--Кнопка для возвращения домой -->
+        <Button
+            android:id="@+id/OpenHomePage"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:text="Домой"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:backgroundTint="#2A1246" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

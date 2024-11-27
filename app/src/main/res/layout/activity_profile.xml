@@ -40,14 +40,25 @@
             android:layout_height="96dp"
             android:layout_gravity="center">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="64dp"
+                app:cardElevation="2dp">
             <ImageView
+                android:id="@+id/UserImage"
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/profile_circle_icon"/>
+                android:src="@drawable/user_icon_in_settings"
+                android:scaleType="centerCrop"
+                />
+            </androidx.cardview.widget.CardView>
 
+            <!--
             <ImageView
+                android:id="@+id/AddUserImage"
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_width="20dp"
@@ -55,7 +66,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="4dp"
                 android:src="@drawable/change_profile_icon"/>
-
+            -->
         </FrameLayout>
 
         <LinearLayout
@@ -64,16 +75,18 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/UserNameSurname"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:text="Иван Иванов"
+                android:text="загрузка..."
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/UserDateOfJoin"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:text="Присоединился в июле 2024"
+                android:layout_height="18dp"
+                android:text="загрузка..."
                 android:textColor="#1A1A1A"
                 android:textSize="14sp"/>
         </LinearLayout>
@@ -112,10 +125,11 @@
                 android:layout_marginBottom="4dp"/>
 
             <TextView
+                android:id="@+id/UserEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:height="15dp"
-                android:text="ivanov@mtuci.ru"
+                android:height="16dp"
+                android:text="загрузка..."
                 android:textColor="#404040"
                 android:textSize="12sp" />
 
@@ -175,10 +189,11 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp" />
             <TextView
+                android:id="@+id/UserGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:height="15dp"
-                android:text="Мужской"
+                android:text="загрузка..."
                 android:textColor="#404040"
                 android:textSize="12sp" />
 
@@ -206,10 +221,11 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp" />
             <TextView
+                android:id="@+id/UserGmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:height="15dp"
-                android:text="ivanov@gmail.com"
+                android:height="16dp"
+                android:text="загрузка..."
                 android:textColor="#404040"
                 android:textSize="12sp" />
 
@@ -228,6 +244,8 @@
             android:layout_marginBottom="16dp"
             >
             <TextView
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:height="17dp"

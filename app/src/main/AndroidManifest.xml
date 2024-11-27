@@ -6,11 +6,10 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApp"
+        android:name=".DataBase.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,13 +20,22 @@
         android:theme="@style/Theme.MyMobileApp"
         tools:targetApi="31">
         <activity
+            android:name=".MainPage.Fragments.BookingСar.Activities.CarReservations"
+            android:exported="false" />
+        <activity
+            android:name=".MainPage.Fragments.BookingСar.Activities.RegistrationOfTheLease"
+            android:exported="false" />
+        <activity
+            android:name=".MainPage.Fragments.BookingСar.Activities.SuccessfulCarBooking"
+            android:exported="false" />
+        <activity
             android:name=".MainPage.MainPage"
             android:exported="false" />
         <activity
             android:name=".CarSearch.SearchResult"
             android:exported="false" />
         <activity
-            android:name=".CarSearch.Loader"
+            android:name=".MainPage.CarSearchLoader"
             android:exported="false" />
         <activity
             android:name=".CarSearch.HomePage"

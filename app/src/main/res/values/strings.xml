@@ -2,4 +2,6 @@
     <string name="app_name">MyMobileApp</string>
     <string name="splashScreen_MainText">DriveNext</string>
     <string name="splashScreen_DesText">Поможем найти твою следующую поездку</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

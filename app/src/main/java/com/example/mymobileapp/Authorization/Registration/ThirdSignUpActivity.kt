@@ -5,6 +5,8 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,25 +21,33 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.mymobileapp.ImagePickerHelper
-import com.example.mymobileapp.MyApp
+import com.example.mymobileapp.DataBase.MyApp
 import com.example.mymobileapp.R
 import com.google.android.material.textfield.TextInputEditText
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan.supabase.storage.storage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
+import java.io.ByteArrayOutputStream
+
+
 val supabase = createSupabaseClient(
     supabaseUrl = "https://qzzziiipxgsyqcsruaml.supabase.co",
     supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6enppaWlweGdzeXFjc3J1YW1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwNjUyOTYsImV4cCI6MjA0NjY0MTI5Nn0.lmCy2_M2Mrt0fNfAhTsMibNNMZAeXqTk7XdwdAiBebg"
 ) {
+    install(io.github.jan.supabase.storage.Storage)
     install(Postgrest)
 }
+
+
 
 
 
@@ -139,7 +149,16 @@ class ThirdSignUpActivity : AppCompatActivity() {
             val currentDate = SimpleDateFormat("dd/M/yyyy").format(Date())
             if (changeDateString(date) != currentDate.toString())
             {
+                //Получение изображений
+                val user_avatar_image = findViewById<ImageView>(R.id.UserImage)
+                val user_driver_license_image = findViewById<ImageView>(R.id.DriverLicenseImage)
+                val user_passport_image = findViewById<ImageView>(R.id.PassportImage)
 
+                val avatarImageData = imageViewToByteArray(user_avatar_image)
+                val driverLicenseImageData = imageViewToByteArray(user_driver_license_image)
+                val passportImageData = imageViewToByteArray(user_passport_image)
+
+                //Текстовые данные, введённые пользователем
                 val user_email = intent.getStringExtra("email").toString()
                 val user_password = intent.getStringExtra("password").toString()
                 val user_surname = intent.getStringExtra("surname").toString()
@@ -153,6 +172,10 @@ class ThirdSignUpActivity : AppCompatActivity() {
                 //Перевод дат из String в Date
                 val dateOfBirth = formatDateToString(stringToDate(user_dateOfBirth.toString()))
                 val dateOfIssueDll = formatDateToString(stringToDate(date))
+
+                val currentDate = Calendar.getInstance().time
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                val formattedDate = dateFormat.format(currentDate)
 
                 //val DLNumber = findViewById<TextInputEditText>(R.id.numberVU).text.toString()
                 Log.d("Date Check", "dateOfBirth: $dateOfBirth, dateOfIssueDL: $dateOfIssueDll")
@@ -169,6 +192,7 @@ class ThirdSignUpActivity : AppCompatActivity() {
                                 gender = user_gender,
                                 driver_license_number = user_driver_license_number,
                                 date_of_issue_dl = dateOfIssueDll,
+                                date_of_registration = formattedDate.toString()
                             )
 
                             val res = supabase.from("user_info").upsert(user) {
@@ -179,11 +203,21 @@ class ThirdSignUpActivity : AppCompatActivity() {
                             val app = application as MyApp
                             app.userId = res.id
 
-                            Toast.makeText(this@ThirdSignUpActivity,"Ошибка! ${app.userId}", Toast.LENGTH_SHORT).show()
+                            Log.d("id нового пользователя","id = ${app.userId}")
 
+                            if (avatarImageData != null) {
+                                uploadUserImage(res.id.toString(), "user_avatar.jpg", avatarImageData)
+                            }
+                            if (driverLicenseImageData != null) {
+                                uploadUserImage(res.id.toString(), "user_driver_license.jpg", driverLicenseImageData)
+                            }
+                            if (passportImageData != null) {
+                                uploadUserImage(res.id.toString(), "user_passport.jpg", passportImageData)
+                            }
 
                             val intent = Intent(this@ThirdSignUpActivity, CongratulationsActivity::class.java)
                             startActivity(intent)
+                            Log.d("Запись данных в БД","Запись данных успешна!")
                         }
                         catch (e: Exception)
                         {
@@ -218,7 +252,6 @@ class ThirdSignUpActivity : AppCompatActivity() {
             return ""
         }
     }
-
 
     fun stringToDate(dateString: String): Date? {
         val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -290,18 +323,34 @@ class ThirdSignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPathFromImageView(imageView: ImageView): String {
-        // Пример получения URI в виде строки (добавьте логику по сохранению или получению пути)
-        val uri = imageView.tag as? String
-        return uri ?: ""
+    // Функция для преобразования ImageView в ByteArray
+    private fun imageViewToByteArray(imageView: ImageView): ByteArray? {
+        val drawable = imageView.drawable as? BitmapDrawable
+        val bitmap = drawable?.bitmap ?: return null
+
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        return outputStream.toByteArray()
     }
 
-    fun changeDateStringForSave(dateString: String): Date {
-        val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        return format.parse(dateString) ?: Date()
+    // Функция для загрузки изображения в папку пользователя
+    private fun uploadUserImage(userId: String, imageName: String, imageData: ByteArray) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val userFolder = "$userId" // Папка для пользователя
+            val filePath = "$userFolder/$imageName"
+
+            try {
+                // Загрузка изображения в Supabase Storage
+                supabase.storage.from("UserImages")
+                    .upload(filePath, imageData) {
+                        upsert = true
+                    }
+                Log.d("Добавление изображения в Storage", " Изображение ${imageName} успешно добавлено")
+            } catch (e: Exception) {
+                Log.d("Добавление изображения в Storage", " Ошибка при добавлении изображения ${imageName}. Ошибка: ${e.message}")
+            }
+        }
     }
-
-
 
 }
 

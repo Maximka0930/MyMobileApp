@@ -12,23 +12,15 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mymobileapp.R
 import com.example.mymobileapp.Authorization.Registration.FirstSignUpActivity
-import com.example.mymobileapp.CarSearch.HomePage
 import com.example.mymobileapp.MainPage.MainPage
-import com.example.mymobileapp.MyApp
-import com.example.mymobileapp.Settings.Settings
-import com.google.android.gms.drive.query.Filters
+import com.example.mymobileapp.DataBase.MyApp
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import kotlinx.serialization.Serializable
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
